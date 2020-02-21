@@ -15,7 +15,7 @@ public class Krill extends Animal {
 
     // The age at which a krill can start to breed.
     private static final int BREEDING_AGE = 1;
-    // The age to which a krill can live.
+    // The age to which a krill can live. todo
     private static final int MAX_SWARM_SIZE = 1000;
     // The likelihood of a krill breeding.
     private static final double BREEDING_PROBABILITY = 0.1;
