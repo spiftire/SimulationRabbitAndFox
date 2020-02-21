@@ -25,6 +25,8 @@ Drektig: 12 månder
 
 Barne hval slutter å patte ved ca 7 månder.
 
+En hval kan leve uten å spise i ca. 7 måneder. 
+
 ### Krill:
 
 I Norskehavet og Barentshavet er den årlige krillproduksjonen beregnet til ca. 287 millioner tonn.
