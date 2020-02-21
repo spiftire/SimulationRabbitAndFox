@@ -173,4 +173,8 @@ public class Whale extends Animal
     {
         return age >= BREEDING_AGE;
     }
+
+    public int getAge() {
+        return age;
+    }
 }

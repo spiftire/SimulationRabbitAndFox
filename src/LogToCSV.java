@@ -1,15 +1,26 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class LogToCSV extends Observer{
+public class LogToCSV {
     private FileWriter fw;
     private BufferedWriter pw;
     private String file;
 
     public LogToCSV(String file) {
-        this.file = file;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        String newFile = file + "_" +dtf.format(now);
+
+        File checkFile = new File(newFile);
+
+        int i = 1;
+        while (checkFile.exists()) {
+            newFile = newFile + "-" + i;
+            checkFile = new File(newFile);
+            i++;
+        }
+        this.file = newFile + ".csv";
     }
 
     public void write(int age, String time) {
