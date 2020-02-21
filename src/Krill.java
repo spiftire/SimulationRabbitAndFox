@@ -116,4 +116,8 @@ public class Krill extends Animal {
         }
         return births;
     }
+
+    public int getSwarmSize() {
+        return swarmSize;
+    }
 }
