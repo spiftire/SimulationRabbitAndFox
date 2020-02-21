@@ -110,6 +110,7 @@ public class Whale extends Animal {
     private void incrementAge() {
         age++;
         if (age > MAX_AGE) {
+            System.out.println(this + " died of old age");
             setDead();
         }
     }
@@ -120,6 +121,7 @@ public class Whale extends Animal {
     private void incrementHunger() {
         foodLevel -= FOOD_PR_MONTH;
         if (foodLevel <= 0) {
+            System.out.println(this + " died of hunger");
             setDead();
         }
     }
