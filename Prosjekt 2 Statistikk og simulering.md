@@ -15,7 +15,7 @@ Forslag på arter og simulere
 
 Levetid: 80-90 år ~ 1080 månder
 
-Spiser: 40 million krill per dag (3,6 tonn med krill) ~ 1.200 millioner krill pr måned, 108 tonn pr måned
+Spiser: 40 million krill per dag (3,6 tonn med krill) ~ 1.200 millioner krill pr måned, 108 tonn pr måned, 1296 tonn pr år 
 
 Kjønnsmoden: 8-10 år ~ 120 månder
 
@@ -31,7 +31,7 @@ I Norskehavet og Barentshavet er den årlige krillproduksjonen beregnet til ca. 
 
 Størrelsen på Norskehavet og Barentshavet kombinert ca 2,5 millioner km²
 
-287 millioner tonn med krill pr år / 2,5 millioner km² = 115 tonn med krill pr km² pr år
+Formering: 287 millioner tonn med krill pr år / 2,5 millioner km² = 115 tonn med krill pr km² pr år ~ 10 tonn pr måned pr km2
 
 Beveger seg lite. Kun opp og ned i vannlaget. Holder seg  samlet i store grupper 
 
