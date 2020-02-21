@@ -119,10 +119,10 @@ public class Whale extends Animal
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
-            if(animal instanceof Rabbit) {
-                Rabbit rabbit = (Rabbit) animal;
-                if(rabbit.isAlive()) { 
-                    rabbit.setDead();
+            if(animal instanceof Krill) {
+                Krill krill = (Krill) animal;
+                if(krill.isAlive()) {
+                    krill.setDead();
                     foodLevel = RABBIT_FOOD_VALUE;
                     return where;
                 }
