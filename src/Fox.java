@@ -33,6 +33,8 @@ public class Fox extends Animal
     // The fox's food level, which is increased by eating rabbits.
     private int foodLevel;
 
+    private LogToCSV log;
+
     /**
      * Create a fox. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.

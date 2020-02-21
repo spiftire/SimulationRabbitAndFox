@@ -1,7 +1,6 @@
-import java.util.Random;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.awt.Color;
 
 /**
@@ -31,6 +30,9 @@ public class Simulator
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
+
+    // Log to CSV file
+    private LogToCSV log;
     
     /**
      * Construct a simulation field with default size.
@@ -64,6 +66,11 @@ public class Simulator
         
         // Setup a valid starting point.
         reset();
+
+        // Setup CSV logger
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        log = new LogToCSV("log-" + dtf.format(now) + ".csv");
     }
     
     /**
