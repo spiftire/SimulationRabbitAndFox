@@ -76,3 +76,20 @@ I ytterkant av rutenettet kjører vi wraparound. Dette er ikke realistisk men gj
 - https://www.whalefacts.org/krill-facts/
 - [https://snl.no/blåhval](https://snl.no/blåhval)
 - https://snl.no/krill
+
+
+# Implementasjon
+
+The simulator must be able to produce a log file with comma-separated values (CVS) recording statistically data.
+As a minimum, you should record
+
+1. Logged to CSV file:
+    - the age and time of death for every agent must be recorded.
+    - the population sizes for each timestep.
+2. Make some (not all) of the model features configurable, so that you can experiment with variations of the model (e
+.g. starting population size, grid size, etc.).
+3. Visualise the location of individual agents at each time step. (The example from Barnes and Kolling tells you how 
+to do this.)
+
+
+
