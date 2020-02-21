@@ -32,6 +32,8 @@ public class SimulatorView extends JFrame
     // A statistics object computing and storing simulation information
     private FieldStats stats;
 
+    private LogToCSV log = new LogToCSV("log-pop");
+
     /**
      * Create a view of the given width and height.
      * @param height The simulation's height.
@@ -112,6 +114,7 @@ public class SimulatorView extends JFrame
             }
         }
         stats.countFinished();
+
 
         population.setText(POPULATION_PREFIX + stats.getPopulationDetails(field));
         fieldView.repaint();

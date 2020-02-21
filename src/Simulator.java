@@ -1,5 +1,3 @@
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.awt.Color;
 
@@ -68,9 +66,7 @@ public class Simulator
         reset();
 
         // Setup CSV logger
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDateTime now = LocalDateTime.now();
-        log = new LogToCSV("log-" + dtf.format(now) + ".csv");
+        log = new LogToCSV("log-age-time");
     }
     
     /**
@@ -112,6 +108,7 @@ public class Simulator
             animal.act(newAnimals);
             if(! animal.isAlive()) {
                 it.remove();
+                log.write(animal.getAge(), ""+step);
             }
         }
                

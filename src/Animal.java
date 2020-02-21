@@ -88,4 +88,6 @@ public abstract class Animal
     {
         return field;
     }
+
+    abstract public int getAge();
 }
