@@ -18,7 +18,7 @@ public class Krill extends Animal {
     // The age to which a krill can live.
     private static final int MAX_SWARM_SIZE = 1000;
     // The likelihood of a krill breeding.
-    private static final double BREEDING_PROBABILITY = 0.4;
+    private static final double BREEDING_PROBABILITY = 0.1;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 10;
     // A shared random number generator to control breeding.
@@ -88,7 +88,7 @@ public class Krill extends Animal {
         List<Location> free = field.getFreeAdjacentLocations(getLocation());
         int births = breed();
         swarmSize += births; // adding newborn to swarm
-        if (swarmSize >= MAX_SWARM_SIZE) {
+        if (swarmSize >= MAX_SWARM_SIZE && free.size() > 0) {
             splitSwarm(newKrill, field, free);
         }
     }
@@ -112,7 +112,7 @@ public class Krill extends Animal {
     private int breed() {
         int births = 0;
         if (rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
+            births =  (int) Math.floor(rand.nextInt(MAX_LITTER_SIZE) * swarmSize * 0.1);
         }
         return births;
     }
