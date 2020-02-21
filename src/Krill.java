@@ -16,11 +16,11 @@ public class Krill extends Animal {
     // The age at which a krill can start to breed.
     private static final int BREEDING_AGE = 1;
     // The age to which a krill can live.
-    private static final int MAX_AGE = 72;
+    private static final int MAX_SWARM_SIZE = 1000;
     // The likelihood of a krill breeding.
-    private static final double BREEDING_PROBABILITY = 0.9;
+    private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 4;
+    private static final int MAX_LITTER_SIZE = 10;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
 
@@ -28,23 +28,28 @@ public class Krill extends Animal {
 
     // Individual characteristics (instance fields).
 
-    // The krill's age.
-    private int age;
+    // The swarm size.
+    private int swarmSize;
 
     /**
      * Create a new krill. A krill may be created with age
      * zero (a new born) or with a random age.
      *
-     * @param randomAge If true, the krill will have a random age.
-     * @param field     The field currently occupied.
-     * @param location  The location within the field.
+     * @param randomSwarmSize If true, the krill will have a random age.
+     * @param field           The field currently occupied.
+     * @param location        The location within the field.
      */
-    public Krill(boolean randomAge, Field field, Location location) {
+    public Krill(boolean randomSwarmSize, Field field, Location location) {
         super(field, location);
-        age = 0;
-        if (randomAge) {
-            age = rand.nextInt(MAX_AGE);
+        swarmSize = 0;
+        if (randomSwarmSize) {
+            swarmSize = rand.nextInt(MAX_SWARM_SIZE);
         }
+    }
+
+    public Krill(Field field, Location location, int swarmSize) {
+        super(field, location);
+        this.swarmSize = swarmSize;
     }
 
     /**
@@ -54,7 +59,6 @@ public class Krill extends Animal {
      * @param newKrill A list to return newly born krill.
      */
     public void act(List<Animal> newKrill) {
-        incrementAge();
         if (isAlive()) {
             giveBirth(newKrill);
             // Try to move
@@ -72,32 +76,30 @@ public class Krill extends Animal {
     }
 
     /**
-     * Increase the age.
-     * This could result in the krill's death.
-     */
-    private void incrementAge() {
-        age++;
-        if (age > MAX_AGE) {
-            setDead();
-        }
-    }
-
-    /**
      * Check whether or not this krill is to give birth at this step.
      * New births will be made into free adjacent locations.
      *
-     * @param newRabbits A list to return newly born krill.
+     * @param newKrill A list to return newly born krill.
      */
-    private void giveBirth(List<Animal> newRabbits) {
+    private void giveBirth(List<Animal> newKrill) {
         // New krill are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
         List<Location> free = field.getFreeAdjacentLocations(getLocation());
         int births = breed();
-        for (int b = 0; b < births && free.size() > 0; b++) {
+        swarmSize += births; // adding newborn to swarm
+        if (swarmSize >= MAX_SWARM_SIZE) {
+            splitSwarm(newKrill, field, free);
+        }
+    }
+
+    private void splitSwarm(List<Animal> newKrill, Field field, List<Location> free) {
+        int splitSize = Math.floorDiv(swarmSize, free.size());
+        while (free.size() > 0){
             Location loc = free.remove(0);
-            Krill young = new Krill(false, field, loc);
-            newRabbits.add(young);
+            Krill young = new Krill(field, loc, splitSize);
+            swarmSize -= splitSize; // decrement the swarm by the part that splits of
+            newKrill.add(young);
         }
     }
 
@@ -109,18 +111,9 @@ public class Krill extends Animal {
      */
     private int breed() {
         int births = 0;
-        if (canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
+        if (rand.nextDouble() <= BREEDING_PROBABILITY) {
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;
-    }
-
-    /**
-     * A krill can breed if it has reached the breeding age.
-     *
-     * @return true if the krill can breed, false otherwise.
-     */
-    private boolean canBreed() {
-        return age >= BREEDING_AGE;
     }
 }
