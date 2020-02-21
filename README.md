@@ -1,2 +1,2 @@
 # SimulationRabbitAndFox
-A simulation of rabbits and fox. Part of Statistics and Simulation course at NTNU
+A simulation of rabbits and whale. Part of Statistics and Simulation course at NTNU

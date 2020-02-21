@@ -9,7 +9,7 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
  */
-public class Fox extends Animal
+public class Whale extends Animal
 {
     // Characteristics shared by all foxes (class variables).
     
@@ -41,7 +41,7 @@ public class Fox extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Fox(boolean randomAge, Field field, Location location)
+    public Whale(boolean randomAge, Field field, Location location)
     {
         super(field, location);
         if(randomAge) {
@@ -145,7 +145,7 @@ public class Fox extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Fox young = new Fox(false, field, loc);
+            Whale young = new Whale(false, field, loc);
             newFoxes.add(young);
         }
     }
